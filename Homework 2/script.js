@@ -25,8 +25,15 @@ if (languageOptions[0].value === splitCookie[1]) {
   languageOptions[0].checked = true;
 }
 
-//if second radio button is checked then change cookie
-if (languageOptions[1].checked === true) {
-  splitCookie[1] = languageOptions[1].value;
-  console.log(splitCookie);
-}
+languageOptions[1].addEventListener("click", function () {
+  if (languageOptions[1].checked === true) {
+    splitCookie[1] = languageOptions[1].value;
+    var cookieObject = [];
+    cookieObject.push({
+      key: splitCookie[0],
+      value: splitCookie[1],
+    });
+    console.log(splitCookie);
+    console.log("cookie : " + myCookies);
+  }
+});
