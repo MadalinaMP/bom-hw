@@ -1,8 +1,8 @@
-const languageOptions = document.getElementsByName("language");
+const languageOption = document.getElementsByName("language");
 
 //console logs to check
-console.log("first button value : " + languageOptions[0].value); //en-US
-console.log("second button value : " + languageOptions[1].value); //ro-RO
+console.log("first button value : " + languageOption[0].value); //en-US
+console.log("second button value : " + languageOption[1].value); //ro-RO
 
 //set a cookie
 document.cookie = "language=en-US";
@@ -11,29 +11,45 @@ document.cookie = "language=en-US";
 const myCookies = document.cookie;
 
 //console log to check
-console.log("cookie : " + myCookies);
+console.log("cookies : " + myCookies);
 
-var splitCookie = window.document.cookie.split("=");
+var cookiePart = window.document.cookie.split("=");
 
 //console logs to check
-console.log(splitCookie); //returns an array
-console.log("cookieKey : " + splitCookie[0]);
-console.log("cookieValue : " + splitCookie[1]);
+console.log(cookiePart); //returns an array
+console.log("cookieKey : " + cookiePart[0]);
+console.log("cookieValue : " + cookiePart[1]);
+
+//create an empty cookieObject
+var cookieObject = [];
 
 //if en-US === en-US then check
-if (languageOptions[0].value === splitCookie[1]) {
-  languageOptions[0].checked = true;
+if (languageOption[0].value === cookiePart[1]) {
+  languageOption[0].checked = true;
 }
 
-languageOptions[1].addEventListener("click", function () {
-  if (languageOptions[1].checked === true) {
-    splitCookie[1] = languageOptions[1].value;
-    var cookieObject = [];
+languageOption[1].addEventListener("click", function () {
+  if (languageOption[1].checked === true) {
+    cookiePart[1] = languageOption[1].value;
     cookieObject.push({
-      key: splitCookie[0],
-      value: splitCookie[1],
+      key: cookiePart[0],
+      value: cookiePart[1],
     });
-    console.log(splitCookie);
-    console.log("cookie : " + myCookies);
+    console.log(cookiePart);
+    document.cookie = cookiePart[0] + "=" + cookiePart[1];
+    console.log(document.cookie);
+  }
+});
+
+languageOption[0].addEventListener("click", function () {
+  if (languageOption[0].checked === true) {
+    cookiePart[1] = languageOption[0].value;
+    cookieObject.push({
+      key: cookiePart[0],
+      value: cookiePart[1],
+    });
+    console.log(cookiePart);
+    document.cookie = cookiePart[0] + "=" + cookiePart[1];
+    console.log(document.cookie);
   }
 });
