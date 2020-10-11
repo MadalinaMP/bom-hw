@@ -4,7 +4,7 @@ const languageOption = document.getElementsByName("language");
 window.localStorage.setItem("language", languageOption[0].value);
 
 const initialRadioValue = window.localStorage.getItem("language");
-console.log("value : " + initialRadioValue);
+console.log("initial value : " + initialRadioValue);
 
 //pre-selected
 if (languageOption[0].value === initialRadioValue) {
